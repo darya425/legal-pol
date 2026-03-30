@@ -58,10 +58,31 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// Default translation function for when context is not available
+const defaultT = (key: TranslationKeys): string => {
+  const keys = key.split(".");
+  let value: unknown = translations["ru"];
+  
+  for (const k of keys) {
+    if (value && typeof value === "object" && k in value) {
+      value = (value as Record<string, unknown>)[k];
+    } else {
+      return key;
+    }
+  }
+  
+  return typeof value === "string" ? value : key;
+};
+
 export function useI18n() {
   const context = useContext(I18nContext);
+  // Return default values if context is not available (e.g., in global-error.tsx)
   if (context === undefined) {
-    throw new Error("useI18n must be used within an I18nProvider");
+    return {
+      locale: "ru" as Locale,
+      setLocale: () => {},
+      t: defaultT,
+    };
   }
   return context;
 }
