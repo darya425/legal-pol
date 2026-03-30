@@ -1,11 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, LucideIcon } from "lucide-react";
+import { useI18n } from "@/lib/i18n/context";
 
 export interface ServiceCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  features: readonly string[];
+  features: string[];
   imagePosition?: "left" | "right";
 }
 
@@ -16,6 +19,8 @@ export function ServiceCard({
   features,
   imagePosition = "left",
 }: ServiceCardProps) {
+  const { t } = useI18n();
+
   return (
     <article
       className={`flex flex-col overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow hover:shadow-md lg:flex-row ${
@@ -48,7 +53,7 @@ export function ServiceCard({
             href="/contacts"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
           >
-            Узнать больше
+            {t("services.learnMore")}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

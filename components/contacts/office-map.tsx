@@ -1,8 +1,11 @@
 "use client";
 
 import { MapPin } from "lucide-react";
+import { useI18n } from "@/lib/i18n/context";
 
 export function OfficeMap() {
+  const { t } = useI18n();
+
   return (
     <div className="overflow-hidden rounded-2xl bg-card shadow-sm">
       <div className="relative aspect-video w-full bg-secondary">
@@ -13,7 +16,7 @@ export function OfficeMap() {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Расположение офиса LegalPol"
+          title={t("contacts.mapTitle")}
         />
       </div>
       <div className="flex items-center gap-3 p-4">
@@ -21,9 +24,9 @@ export function OfficeMap() {
           <MapPin className="h-5 w-5 text-primary" />
         </div>
         <div>
-          <p className="font-medium text-foreground">Офис LegalPol</p>
+          <p className="font-medium text-foreground">{t("contacts.mapTitle")}</p>
           <p className="text-sm text-muted-foreground">
-            ул. Маршалковская 100, оф. 512, Варшава
+            {t("contacts.mapSubtitle")}
           </p>
         </div>
       </div>

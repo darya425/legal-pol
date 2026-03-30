@@ -1,3 +1,5 @@
+"use client";
+
 import {
   FileText,
   Briefcase,
@@ -6,97 +8,93 @@ import {
   GraduationCap,
   Plane,
 } from "lucide-react";
-import { ServiceCard, type ServiceCardProps } from "./service-card";
-
-const services: Omit<ServiceCardProps, "imagePosition">[] = [
-  {
-    icon: FileText,
-    title: "Вид на жительство (Карта побыту)",
-    description:
-      "Полное сопровождение процесса получения временного или постоянного вида на жительство в Польше. Подготовка документов, запись на приём, представительство в воеводстве.",
-    features: [
-      "Временный ВНЖ (до 3 лет)",
-      "Постоянный ВНЖ",
-      "Карта резидента ЕС",
-      "Продление и смена основания",
-    ],
-  },
-  {
-    icon: Briefcase,
-    title: "Рабочая виза и разрешения",
-    description:
-      "Оформление рабочих виз и разрешений на работу для специалистов всех уровней. Поможем с Poland Business Harbour, Blue Card EU и стандартными рабочими визами.",
-    features: [
-      "Разрешение на работу типа A",
-      "Blue Card EU",
-      "Poland Business Harbour",
-      "Oświadczenie о намерении трудоустройства",
-    ],
-  },
-  {
-    icon: Users,
-    title: "Воссоединение семьи",
-    description:
-      "Помогаем воссоединиться с семьёй в Польше. Оформление документов для супругов, детей и других членов семьи граждан Польши или обладателей ВНЖ.",
-    features: [
-      "ВНЖ для супругов",
-      "Документы на детей",
-      "Воссоединение с родителями",
-      "Легализация совместного проживания",
-    ],
-  },
-  {
-    icon: Building2,
-    title: "Регистрация бизнеса",
-    description:
-      "Открытие компании в Польше и получение бизнес-визы. Полное сопровождение от регистрации фирмы до получения ВНЖ на основании ведения бизнеса.",
-    features: [
-      "Регистрация Sp. z o.o.",
-      "Jednoosobowa działalność",
-      "ВНЖ для предпринимателей",
-      "Бухгалтерское сопровождение",
-    ],
-  },
-  {
-    icon: GraduationCap,
-    title: "Студенческие визы",
-    description:
-      "Помощь в получении студенческих виз и ВНЖ для обучения в польских университетах. Консультации по выбору учебного заведения и подготовке документов.",
-    features: [
-      "Виза для обучения",
-      "ВНЖ студента",
-      "Продление на время учёбы",
-      "Смена статуса после выпуска",
-    ],
-  },
-  {
-    icon: Plane,
-    title: "Гражданство Польши",
-    description:
-      "Консультации и сопровождение процесса получения польского гражданства. Помогаем с натурализацией, признанием гражданства и Картой поляка.",
-    features: [
-      "Натурализация",
-      "Признание гражданства",
-      "Карта поляка",
-      "Подготовка к экзамену",
-    ],
-  },
-];
+import { ServiceCard } from "./service-card";
+import { useI18n } from "@/lib/i18n/context";
 
 export function ServicesList() {
+  const { t } = useI18n();
+
+  const services = [
+    {
+      icon: FileText,
+      title: t("services.residence.title"),
+      description: t("services.residence.description"),
+      features: [
+        t("services.residence.feature1"),
+        t("services.residence.feature2"),
+        t("services.residence.feature3"),
+        t("services.residence.feature4"),
+      ],
+    },
+    {
+      icon: Briefcase,
+      title: t("services.work.title"),
+      description: t("services.work.description"),
+      features: [
+        t("services.work.feature1"),
+        t("services.work.feature2"),
+        t("services.work.feature3"),
+        t("services.work.feature4"),
+      ],
+    },
+    {
+      icon: Users,
+      title: t("services.family.title"),
+      description: t("services.family.description"),
+      features: [
+        t("services.family.feature1"),
+        t("services.family.feature2"),
+        t("services.family.feature3"),
+        t("services.family.feature4"),
+      ],
+    },
+    {
+      icon: Building2,
+      title: t("services.business.title"),
+      description: t("services.business.description"),
+      features: [
+        t("services.business.feature1"),
+        t("services.business.feature2"),
+        t("services.business.feature3"),
+        t("services.business.feature4"),
+      ],
+    },
+    {
+      icon: GraduationCap,
+      title: t("services.student.title"),
+      description: t("services.student.description"),
+      features: [
+        t("services.student.feature1"),
+        t("services.student.feature2"),
+        t("services.student.feature3"),
+        t("services.student.feature4"),
+      ],
+    },
+    {
+      icon: Plane,
+      title: t("services.citizenship.title"),
+      description: t("services.citizenship.description"),
+      features: [
+        t("services.citizenship.feature1"),
+        t("services.citizenship.feature2"),
+        t("services.citizenship.feature3"),
+        t("services.citizenship.feature4"),
+      ],
+    },
+  ];
+
   return (
     <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <span className="text-sm font-medium uppercase tracking-wider text-primary">
-            Наши услуги
+            {t("services.label")}
           </span>
           <h1 className="mt-4 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Полный спектр услуг по легализации
+            {t("services.title")}
           </h1>
           <p className="mx-auto mt-4 max-w-3xl text-pretty text-lg text-muted-foreground">
-            Предоставляем комплексную помощь на всех этапах легализации: от консультации 
-            до получения документов. Работаем прозрачно и эффективно.
+            {t("services.subtitle")}
           </p>
         </div>
 
@@ -104,7 +102,10 @@ export function ServicesList() {
           {services.map((service, index) => (
             <ServiceCard
               key={service.title}
-              {...service}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              features={service.features}
               imagePosition={index % 2 === 0 ? "left" : "right"}
             />
           ))}

@@ -1,21 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
-
-const navLinks = [
-  { href: "/", label: "Главная" },
-  { href: "/services", label: "Услуги" },
-  { href: "/contacts", label: "Контакты" },
-] as const;
-
-const services = [
-  "Вид на жительство",
-  "Рабочая виза",
-  "Воссоединение семьи",
-  "Регистрация бизнеса",
-] as const;
+import { useI18n } from "@/lib/i18n/context";
 
 export function Footer() {
+  const { t } = useI18n();
   const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+    { href: "/", label: t("nav.home") },
+    { href: "/services", label: t("nav.services") },
+    { href: "/contacts", label: t("nav.contacts") },
+  ];
+
+  const services = [
+    t("footer.service1"),
+    t("footer.service2"),
+    t("footer.service3"),
+    t("footer.service4"),
+  ];
 
   return (
     <footer className="border-t border-border bg-secondary/50">
@@ -30,15 +34,14 @@ export function Footer() {
               <span className="text-lg font-semibold text-foreground">LegalPol</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Профессиональная помощь в легализации в Польше. Работаем с 2015 года, 
-              помогли более 5000 клиентов обрести новый дом.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground">
-              Навигация
+              {t("footer.navigation")}
             </h3>
             <ul className="mt-4 space-y-3">
               {navLinks.map((link) => (
@@ -57,7 +60,7 @@ export function Footer() {
           {/* Services */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground">
-              Услуги
+              {t("footer.servicesTitle")}
             </h3>
             <ul className="mt-4 space-y-3">
               {services.map((service) => (
@@ -76,7 +79,7 @@ export function Footer() {
           {/* Contacts */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground">
-              Контакты
+              {t("footer.contactsTitle")}
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
@@ -100,7 +103,7 @@ export function Footer() {
               <li>
                 <span className="flex items-start gap-2 text-sm text-muted-foreground">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                  ул. Маршалковская 100, Варшава
+                  {t("footer.address")}
                 </span>
               </li>
             </ul>
@@ -111,20 +114,20 @@ export function Footer() {
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} LegalPol. Все права защищены.
+              © {currentYear} LegalPol. {t("footer.rights")}
             </p>
             <div className="flex gap-6">
               <Link
                 href="#"
                 className="text-sm text-muted-foreground transition-colors hover:text-primary"
               >
-                Политика конфиденциальности
+                {t("footer.privacy")}
               </Link>
               <Link
                 href="#"
                 className="text-sm text-muted-foreground transition-colors hover:text-primary"
               >
-                Условия использования
+                {t("footer.terms")}
               </Link>
             </div>
           </div>

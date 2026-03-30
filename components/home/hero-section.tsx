@@ -1,13 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Shield, Clock, Users } from "lucide-react";
-
-const features = [
-  { icon: Shield, text: "100% легально" },
-  { icon: Clock, text: "Быстрое оформление" },
-  { icon: Users, text: "Персональный подход" },
-] as const;
+import { useI18n } from "@/lib/i18n/context";
 
 export function HeroSection() {
+  const { t } = useI18n();
+
+  const features = [
+    { icon: Shield, text: t("hero.feature1") },
+    { icon: Clock, text: t("hero.feature2") },
+    { icon: Users, text: t("hero.feature3") },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-secondary/50 to-background">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
@@ -15,15 +20,14 @@ export function HeroSection() {
           {/* Content */}
           <div className="text-center lg:text-left">
             <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-              Надёжный партнёр с 2015 года
+              {t("hero.badge")}
             </span>
             <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Легализация в Польше{" "}
-              <span className="text-primary">без стресса</span>
+              {t("hero.title")}{" "}
+              <span className="text-primary">{t("hero.titleHighlight")}</span>
             </h1>
             <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Помогаем получить вид на жительство, рабочую визу и гражданство. 
-              Полное юридическое сопровождение от подачи документов до получения карты побыту.
+              {t("hero.description")}
             </p>
 
             {/* Features */}
@@ -45,14 +49,14 @@ export function HeroSection() {
                 href="/contacts"
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
-                Бесплатная консультация
+                {t("hero.ctaPrimary")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary"
               >
-                Наши услуги
+                {t("hero.ctaSecondary")}
               </Link>
             </div>
           </div>
@@ -67,7 +71,7 @@ export function HeroSection() {
                   </div>
                   <p className="mt-6 text-2xl font-bold text-foreground">5000+</p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Довольных клиентов
+                    {t("hero.clients")}
                   </p>
                   <div className="mt-6 flex justify-center gap-1">
                     {[...Array(5)].map((_, i) => (
@@ -81,7 +85,7 @@ export function HeroSection() {
                     ))}
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Средняя оценка 4.9
+                    {t("hero.avgRating")}
                   </p>
                 </div>
               </div>
