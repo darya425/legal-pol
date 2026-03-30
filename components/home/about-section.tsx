@@ -1,17 +1,12 @@
-"use client";
+'use client';
 
-import { CheckCircle } from "lucide-react";
-import { useI18n } from "@/lib/i18n/context";
+import { CheckCircle } from 'lucide-react';
+import { useI18n } from '@/lib/i18n/context';
 
 export function AboutSection() {
   const { t } = useI18n();
 
-  const benefits = [
-    t("about.benefit1"),
-    t("about.benefit2"),
-    t("about.benefit3"),
-    t("about.benefit4"),
-  ];
+  const benefits = [t('about.benefit1'), t('about.benefit2'), t('about.benefit3'), t('about.benefit4')];
 
   return (
     <section className="bg-background py-16 sm:py-24">
@@ -20,22 +15,18 @@ export function AboutSection() {
           {/* Image Side */}
           <div className="relative order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-2xl bg-secondary">
-              <div className="aspect-[4/3] w-full bg-gradient-to-br from-primary/10 via-secondary to-accent/10 p-8">
+              <div className="aspect-4/3 w-full bg-linear-to-br from-primary/10 via-secondary to-accent/10 p-8">
                 <div className="flex h-full flex-col items-center justify-center rounded-xl bg-card p-6 shadow-sm">
-                  <p className="text-center text-lg font-medium text-foreground">
-                    {t("about.officeTitle")}
-                  </p>
-                  <p className="mt-2 text-center text-sm text-muted-foreground">
-                    {t("about.officeSubtitle")}
-                  </p>
+                  <p className="text-center text-lg font-medium text-foreground">{t('about.officeTitle')}</p>
+                  <p className="mt-2 text-center text-sm text-muted-foreground">{t('about.officeSubtitle')}</p>
                   <div className="mt-6 grid grid-cols-2 gap-4 text-center">
                     <div className="rounded-lg bg-secondary p-4">
-                      <p className="text-2xl font-bold text-primary">10+</p>
-                      <p className="text-xs text-muted-foreground">{t("about.yearsExperience")}</p>
+                      <p className="text-2xl font-bold text-primary">7+</p>
+                      <p className="text-xs text-muted-foreground">{t('about.yearsExperience')}</p>
                     </div>
                     <div className="rounded-lg bg-secondary p-4">
                       <p className="text-2xl font-bold text-primary">98%</p>
-                      <p className="text-xs text-muted-foreground">{t("about.successRate")}</p>
+                      <p className="text-xs text-muted-foreground">{t('about.successRate')}</p>
                     </div>
                   </div>
                 </div>
@@ -45,22 +36,16 @@ export function AboutSection() {
 
           {/* Content Side */}
           <div className="order-1 lg:order-2">
-            <span className="text-sm font-medium uppercase tracking-wider text-primary">
-              {t("about.label")}
-            </span>
+            <span className="text-sm font-medium uppercase tracking-wider text-primary">{t('about.label')}</span>
             <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {t("about.title")}
+              {t('about.title')}
             </h2>
-            <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
-              {t("about.description1")}
-            </p>
-            <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-              {t("about.description2")}
-            </p>
+            <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">{t('about.description1')}</p>
+            <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">{t('about.description2')}</p>
 
             {/* Benefits List */}
             <ul className="mt-8 space-y-4">
-              {benefits.map((benefit) => (
+              {benefits.map(benefit => (
                 <li key={benefit} className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 shrink-0 text-primary" />
                   <span className="text-foreground">{benefit}</span>

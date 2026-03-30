@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { MapPin } from "lucide-react";
-import { useI18n } from "@/lib/i18n/context";
+import { MapPin } from 'lucide-react';
+import { useI18n } from '@/lib/i18n/context';
 
 export function OfficeMap() {
   const { t } = useI18n();
@@ -11,12 +11,12 @@ export function OfficeMap() {
       <div className="relative aspect-video w-full bg-secondary">
         {/* Google Maps Embed */}
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.635742668!2d21.0096354!3d52.2288548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e49%3A0x4bf4b1b8f8a4f!2sMarszałkowska%20100%2C%20Warszawa!5e0!3m2!1sen!2spl!4v1648639393744!5m2!1sen!2spl"
+          src="https://www.google.com/maps?q=Legionowa+6,+Bialystok&output=embed"
           className="absolute inset-0 h-full w-full border-0"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title={t("contacts.mapTitle")}
+          title={t('contacts.mapTitle')}
         />
       </div>
       <div className="flex items-center gap-3 p-4">
@@ -24,10 +24,8 @@ export function OfficeMap() {
           <MapPin className="h-5 w-5 text-primary" />
         </div>
         <div>
-          <p className="font-medium text-foreground">{t("contacts.mapTitle")}</p>
-          <p className="text-sm text-muted-foreground">
-            {t("contacts.mapSubtitle")}
-          </p>
+          <p className="font-medium text-foreground">{t('contacts.mapTitle')}</p>
+          <p className="text-sm text-muted-foreground">{t('contacts.mapSubtitle')}</p>
         </div>
       </div>
     </div>

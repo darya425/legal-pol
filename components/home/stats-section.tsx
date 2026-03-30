@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useRef } from "react";
-import { useI18n } from "@/lib/i18n/context";
+import { useEffect, useState, useRef } from 'react';
+import { useI18n } from '@/lib/i18n/context';
 
 function useCountUp(target: number, duration: number = 2000, start: boolean = false) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!start) return;
-    
+
     let startTime: number | null = null;
     let animationFrame: number;
 
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      
+
       setCount(Math.floor(progress * target));
 
       if (progress < 1) {
@@ -44,7 +44,7 @@ function StatItem({ value, suffix, label }: { value: number; suffix: string; lab
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (ref.current) {
@@ -69,10 +69,10 @@ export function StatsSection() {
   const { t } = useI18n();
 
   const stats = [
-    { value: 5000, suffix: "+", label: t("stats.clients") },
-    { value: 98, suffix: "%", label: t("stats.successRate") },
-    { value: 10, suffix: "+", label: t("stats.yearsOnMarket") },
-    { value: 15, suffix: "+", label: t("stats.experts") },
+    { value: 1200, suffix: '+', label: t('stats.clients') },
+    { value: 98, suffix: '%', label: t('stats.successRate') },
+    { value: 7, suffix: '+', label: t('stats.yearsOnMarket') },
+    { value: 5000, suffix: '+', label: t('stats.experts') },
   ];
 
   return (
@@ -80,21 +80,14 @@ export function StatsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            {t("stats.title")}
+            {t('stats.title')}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">
-            {t("stats.subtitle")}
-          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">{t('stats.subtitle')}</p>
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-12">
-          {stats.map((stat) => (
-            <StatItem
-              key={stat.label}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={stat.label}
-            />
+          {stats.map(stat => (
+            <StatItem key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} />
           ))}
         </div>
       </div>
