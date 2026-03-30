@@ -1,51 +1,56 @@
-import { Building2, Users, Briefcase, Globe, Award, Heart } from "lucide-react";
+"use client";
 
-const clientTypes = [
-  {
-    icon: Users,
-    title: "Частные лица",
-    description: "Помогаем людям и семьям с переездом",
-  },
-  {
-    icon: Briefcase,
-    title: "Предприниматели",
-    description: "Регистрация бизнеса и бизнес-виза",
-  },
-  {
-    icon: Building2,
-    title: "Компании",
-    description: "Корпоративное сопровождение сотрудников",
-  },
-  {
-    icon: Globe,
-    title: "IT-специалисты",
-    description: "Poland Business Harbour и Blue Card",
-  },
-  {
-    icon: Award,
-    title: "Студенты",
-    description: "Студенческие визы и продление",
-  },
-  {
-    icon: Heart,
-    title: "Семьи",
-    description: "Воссоединение семьи в Польше",
-  },
-] as const;
+import { Building2, Users, Briefcase, Globe, Award, Heart } from "lucide-react";
+import { useI18n } from "@/lib/i18n/context";
 
 export function ClientsSection() {
+  const { t } = useI18n();
+
+  const clientTypes = [
+    {
+      icon: Users,
+      title: t("clients.individuals"),
+      description: t("clients.individualsDesc"),
+    },
+    {
+      icon: Briefcase,
+      title: t("clients.entrepreneurs"),
+      description: t("clients.entrepreneursDesc"),
+    },
+    {
+      icon: Building2,
+      title: t("clients.companies"),
+      description: t("clients.companiesDesc"),
+    },
+    {
+      icon: Globe,
+      title: t("clients.itSpecialists"),
+      description: t("clients.itSpecialistsDesc"),
+    },
+    {
+      icon: Award,
+      title: t("clients.students"),
+      description: t("clients.studentsDesc"),
+    },
+    {
+      icon: Heart,
+      title: t("clients.families"),
+      description: t("clients.familiesDesc"),
+    },
+  ];
+
   return (
     <section className="bg-secondary/30 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <span className="text-sm font-medium uppercase tracking-wider text-primary">
-            Наши клиенты
+            {t("clients.label")}
           </span>
           <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Кому мы помогаем
+            {t("clients.title")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">
-            Работаем с различными категориями клиентов, предоставляя индивидуальные решения для каждого случая
+            {t("clients.subtitle")}
           </p>
         </div>
 

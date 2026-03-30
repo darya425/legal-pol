@@ -1,13 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-
-const stats = [
-  { value: 5000, suffix: "+", label: "Довольных клиентов" },
-  { value: 98, suffix: "%", label: "Успешных дел" },
-  { value: 10, suffix: "+", label: "Лет на рынке" },
-  { value: 15, suffix: "+", label: "Экспертов в команде" },
-] as const;
+import { useI18n } from "@/lib/i18n/context";
 
 function useCountUp(target: number, duration: number = 2000, start: boolean = false) {
   const [count, setCount] = useState(0);
@@ -72,15 +66,24 @@ function StatItem({ value, suffix, label }: { value: number; suffix: string; lab
 }
 
 export function StatsSection() {
+  const { t } = useI18n();
+
+  const stats = [
+    { value: 5000, suffix: "+", label: t("stats.clients") },
+    { value: 98, suffix: "%", label: t("stats.successRate") },
+    { value: 10, suffix: "+", label: t("stats.yearsOnMarket") },
+    { value: 15, suffix: "+", label: t("stats.experts") },
+  ];
+
   return (
     <section className="bg-secondary/50 py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Цифры, которые говорят за нас
+            {t("stats.title")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">
-            Мы гордимся результатами нашей работы и доверием клиентов
+            {t("stats.subtitle")}
           </p>
         </div>
 
