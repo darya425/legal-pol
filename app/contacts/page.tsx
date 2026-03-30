@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import { ContactForm } from "@/components/contacts/contact-form";
-import { ContactInfo } from "@/components/contacts/contact-info";
-import { OfficeMap } from "@/components/contacts/office-map";
-import { ContactsHeader } from "@/components/contacts/contacts-header";
+import type { Metadata } from 'next';
+import { ContactForm } from '@/components/contacts/contact-form';
+import { ContactInfo } from '@/components/contacts/contact-info';
+import { OfficeMap } from '@/components/contacts/office-map';
+import { ContactsHeader } from '@/components/contacts/contacts-header';
 
 export const metadata: Metadata = {
-  title: "Контакты",
+  title: 'Контакты',
   description:
-    "Свяжитесь с LegalPol для получения бесплатной консультации по легализации в Польше. Офис в центре Варшавы, работаем пн-сб.",
+    'Свяжитесь с Legalizacja PRO для получения бесплатной консультации по легализации в Польше. Офис в центре Белостока, работаем пн-пт.',
 };
 
 export default function ContactsPage() {
